@@ -72,7 +72,7 @@ functions:
           method: delete
           cors: true
 
-  get:
+  translate:
     handler: todos/translate.get
     events:
       - http:

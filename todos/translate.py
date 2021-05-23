@@ -31,8 +31,10 @@ def get(event, context):
         }
     )
     target = event['pathParameters']['lang']
+    
     task = result['Item']['text']
-    source = source_result ['Languages'][0]['LanguageCode']
+    
+    source = source_result['Languages'][0]['LanguageCode']
     
     task_translated = translate_task(task,source,target)
     result['Item']['text']=task_translated['TranslatedText']

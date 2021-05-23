@@ -19,7 +19,16 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
-
+    - Effect: Allow
+      Action:
+        - comprehend:BatchDetectDominantLanguage
+        - comprehend:DetectDominantLanguage
+      Resource: "*"  
+      - Effect: Allow
+      Action:
+        - translate:TranslateText
+        - cloudwatch:GetMetricStatistics
+      Resource: "*"  
 functions:
   create:
     handler: todos/create.create
@@ -61,6 +70,14 @@ functions:
           method: delete
           cors: true
 
+  get:
+    handler: todos/translate.get
+    events:
+      - http:
+          path: todos/{id}{lang}
+          method: get
+          cors: true
+          
 resources:
   Resources:
     TodosDynamoDbTable:

@@ -24,8 +24,8 @@ provider:
         - comprehend:BatchDetectDominantLanguage
         - comprehend:DetectDominantLanguage
       Resource: "*"
-      - Effect: Allow
-        Action:
+    - Effect: Allow
+      Action:
         - translate:TranslateText
         - cloudwatch:GetMetricStatistics
         - cloudwatch:ListMetrics

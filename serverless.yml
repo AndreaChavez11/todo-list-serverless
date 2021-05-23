@@ -23,12 +23,14 @@ provider:
       Action:
         - comprehend:BatchDetectDominantLanguage
         - comprehend:DetectDominantLanguage
-      Resource: "*"  
+      Resource: "*"
       - Effect: Allow
-      Action:
+        Action:
         - translate:TranslateText
         - cloudwatch:GetMetricStatistics
-      Resource: "*"  
+        - cloudwatch:ListMetrics
+      Resource: "*"
+      
 functions:
   create:
     handler: todos/create.create

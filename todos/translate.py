@@ -8,7 +8,6 @@ dynamodb = boto3.resource('dynamodb')
 translate = boto3.client('translate')
 comprehend = boto3.client('comprehend')
 
-
 def detect_language_task(task):
     response = comprehend.detect_dominant_language(Text='string')
     return response
@@ -19,8 +18,8 @@ def translate_task(task,source,target):
         Text = task,
         SourceLanguageCode = source,
         TargetLanguageCode= target)
-        
-        return response
+    return response
+    
 def get(event, context):
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
 

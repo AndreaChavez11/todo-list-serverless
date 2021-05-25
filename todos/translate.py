@@ -14,7 +14,7 @@ def detect_language_task(task):
 
 def translate_task(task,source,target):
     
-    response = translate.translated_task(
+    response = translate.translate_text(
         Text = task,
         SourceLanguageCode = source,
         TargetLanguageCode= target)

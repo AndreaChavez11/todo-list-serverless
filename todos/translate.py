@@ -14,7 +14,7 @@ def detect_language_task(task):
 
 def translate_task(task,source,target):
     
-    response = translate.translate_task(
+    response = translate.translated_task(
         Text = task,
         SourceLanguageCode = source,
         TargetLanguageCode= target)
@@ -38,6 +38,7 @@ def get(event, context):
     source = source_result['Languages'][0]['LanguageCode']
     
     task_translated = translate_task(task,source,target)
+    
     result['Item']['text']=task_translated['TranslatedText']
     
     # create a response
